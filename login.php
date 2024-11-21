@@ -5,14 +5,6 @@ require_once('../estudiante/clases/Usuario.php');
 
 $usuario = new Usuario($conexion);
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     $email = $_POST['email'];
-//     $password = $_POST['password'];
-
-//     echo $usuario->iniciarSesion($email, $password);
-// }
-// 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = mysqli_real_escape_string($conexion, $_POST['email']);
     $password = $_POST['password'];
@@ -39,5 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo $usuario->iniciarSesion($email, $password);
 }
-?>
 
+?>
+<form method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <label>Contraseña:</label>
+    <input type="password" name="password" required>
+    <button type="submit">Registrar</button>
+</form>
